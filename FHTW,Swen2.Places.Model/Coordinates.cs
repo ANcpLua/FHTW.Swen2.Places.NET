@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWEN2.Places
+namespace SWEN2.Places.Model
 {
     /// <summary>This class represents coordinates.</summary>
     public record class Coordinates(double Latitude, double Longitude): ILocation

@@ -6,9 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWEN2.Places
+using Microsoft.EntityFrameworkCore;
+
+namespace SWEN2.Places.Model
 {
     /// <summary>This class represents a story.</summary>
+    [Table("STORIES")][PrimaryKey("ID")]
     public class Story
     {
         /// <summary>Creates a new instance of this class.</summary>

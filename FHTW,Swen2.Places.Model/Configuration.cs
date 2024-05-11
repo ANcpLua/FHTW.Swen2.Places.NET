@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace SWEN2.Places
+namespace SWEN2.Places.Model
 {
     /// <summary>This class implements configuration data.</summary>
     public class Configuration

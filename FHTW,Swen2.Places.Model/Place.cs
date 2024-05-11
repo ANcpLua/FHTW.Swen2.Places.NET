@@ -7,11 +7,13 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace SWEN2.Places
+namespace SWEN2.Places.Model
 {
     /// <summary>This class represents a place.</summary>
+    [Table("PLACES")][PrimaryKey("ID")]
     public sealed class Place
     {
         /// <summary>Lazy loader.</summary>
@@ -41,7 +43,7 @@ namespace SWEN2.Places
 
 
         [Column("LOCATION")]
-        private string? _Location
+        internal string? _Location
         {
             get
             {
@@ -75,7 +77,7 @@ namespace SWEN2.Places
         /// <summary>Gets the place ID.</summary>
         [Key][Column("ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? ID
+        public int ID
         {
             get;
         }
