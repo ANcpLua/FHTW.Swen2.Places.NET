@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHTW.SWEN2.Places.UnitTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHTW.Swen2.Places.Model", "FHTW,Swen2.Places.Model\FHTW.Swen2.Places.Model.csproj", "{D57A0DAB-CE9A-484B-A90C-0487480CD1C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHTW.Swen2.Places", "FHTW.Swen2.Places\FHTW.Swen2.Places.csproj", "{7124D3C5-5DA3-4AC0-AF94-B62123B2CD0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D57A0DAB-CE9A-484B-A90C-0487480CD1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D57A0DAB-CE9A-484B-A90C-0487480CD1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D57A0DAB-CE9A-484B-A90C-0487480CD1C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7124D3C5-5DA3-4AC0-AF94-B62123B2CD0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7124D3C5-5DA3-4AC0-AF94-B62123B2CD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7124D3C5-5DA3-4AC0-AF94-B62123B2CD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7124D3C5-5DA3-4AC0-AF94-B62123B2CD0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
