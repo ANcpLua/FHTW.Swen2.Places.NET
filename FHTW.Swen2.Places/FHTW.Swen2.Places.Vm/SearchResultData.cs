@@ -24,6 +24,15 @@ namespace FHTW.Swen2.Places.Vm
         {
             _Parent = parent;
             Place = place;
+
+            SelectResultCommand = new(this);
+        }
+
+
+        /// <summary>Gets the select result command.</summary>
+        public SelectResultCommand SelectResultCommand
+        {
+            get; private init;
         }
 
 

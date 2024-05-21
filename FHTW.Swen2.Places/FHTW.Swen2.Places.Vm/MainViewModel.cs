@@ -29,6 +29,14 @@ namespace FHTW.Swen2.Places.Vm
         {
             ResultPage = new(this);
             SearchCommand = new(this);
+            PlaceDetails = new(this);
+        }
+
+
+        /// <summary>Gets the place details view model.</summary>
+        public PlaceDetailsViewModel PlaceDetails
+        {
+            get; private init;
         }
 
 

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:FHTW.Swen2.Places.Vm"
         mc:Ignorable="d"
-        Title="Places Demonstration" Height="309" Width="618">
+        Title="Places Demonstration" Height="309" Width="618"
+        FocusManager.FocusedElement="{Binding ElementName=_TextSearch}">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
@@ -19,7 +20,11 @@
         </Menu>
         <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch">
             <TextBox Name="_TextSearch" Height="23" Width="400" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
-                     Text="{Binding SearchExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding SearchExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
             <Button Content="Search" Height="22" Width="97" Margin="420,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"
                     Command="{Binding SearchCommand}"/>
         </Grid>
@@ -31,6 +36,9 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,2">
+                            <Grid.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding SelectResultCommand}"/>
+                            </Grid.InputBindings>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="180"/>
                                 <ColumnDefinition Width="*"/>
