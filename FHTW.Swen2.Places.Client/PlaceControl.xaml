@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="FHTW.Swen2.Places.Client.PlaceControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             xmlns:local="clr-namespace:FHTW.Swen2.Places.Client"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1150">
+    <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ScrollViewer DockPanel.Dock="Right" VerticalAlignment="Stretch" Width="400" Background="AliceBlue">
+            <ItemsControl ItemsSource="{Binding PlaceDetails.Stories}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ImageSource}" Width="320" Height="400" ToolTip="{Binding Text}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <WrapPanel DockPanel.Dock="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Beige">
+            <Grid Width="400" Height="300">
+                <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="360" Height="23" FontSize="14" FontWeight="Bold" Background="Transparent" Margin="20,20,20,256" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                <Grid Width="400" Margin="0,67,0,0">
+                    <Grid Visibility="{Binding PlaceDetails.AddressVisibility}">
+                        <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="360" Height="23" Background="Transparent" Margin="20,21,20,189" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                        <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="23" Background="Transparent" Margin="20,49,294,161" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                        <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Town, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="23" Background="Transparent" Margin="129,49,20,161" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                        <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="360" Height="23" Background="Transparent" Margin="20,77,20,133" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                        <Label Content="Switch to Coordinates" Margin="240,99,20,107" Visibility="{Binding PlaceDetails.SwitchLinkVisibility}">
+                            <Label.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding PlaceDetails.SwitchLocation}"/>
+                            </Label.InputBindings>
+                        </Label>
+                    </Grid>
+                    <Grid Visibility="{Binding PlaceDetails.CoordinatesVisibility}">
+                        <Label Content="Latitude" Margin="17,16,23,194"/>
+                        <Label Content="Longitude" Margin="17,44,23,154"/>
+                        <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Latitude, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="23" Background="Transparent" Margin="100,21,20,189" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                        <TextBox TextWrapping="NoWrap" Text="{Binding PlaceDetails.Longitude, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="23" Background="Transparent" Margin="100,50,20,160" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+                        <Label Content="Switch to Address" Margin="240,99,20,107" Visibility="{Binding PlaceDetails.SwitchLinkVisibility}">
+                            <Label.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding PlaceDetails.SwitchLocation}"/>
+                            </Label.InputBindings>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <wv:WebView2 Height="200" Width="300" Margin="20,20,20,20" Source="{Binding PlaceDetails.MapSrc, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding PlaceDetails.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="20,20,20,20" Height="88" Width="700" Background="Transparent" BorderThickness="{Binding PlaceDetails.EditingBorders}" IsReadOnly="{Binding PlaceDetails.Locked}"/>
+
+        </WrapPanel>
+    </DockPanel>
+</UserControl>

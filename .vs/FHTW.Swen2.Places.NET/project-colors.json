@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "31c4948d-5dc6-4935-b0a9-b6cd23b0c04b": {
+      "ProjectGuid": "31c4948d-5dc6-4935-b0a9-b6cd23b0c04b",
+      "DisplayName": "FHTW.Swen2.Places.Model",
+      "ColorIndex": 0
+    },
+    "8a6c7c1f-b0d1-46e3-825a-ead1284766ad": {
+      "ProjectGuid": "8a6c7c1f-b0d1-46e3-825a-ead1284766ad",
+      "DisplayName": "FHTW.Swen2.Places.Client",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

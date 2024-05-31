@@ -1,0 +1,55 @@
+﻿<Window x:Class="FHTW.Swen2.Places.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FHTW.Swen2.Places.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="669" Width="1211" FocusManager.FocusedElement="{Binding ElementName=_TextSearch}">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <DockPanel HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" >
+        <Menu Height="18" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Tools">
+                <MenuItem Header="Generate Report" Command="{Binding GenerateReportCommand}" />
+            </MenuItem>
+            <MenuItem Header="Help"/>
+        </Menu>
+        <Grid DockPanel.Dock="Top" Height="32">
+            <Label Content="Search:" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBox Name="_TextSearch" HorizontalAlignment="Left" Height="22" Margin="69,0,0,0" TextWrapping="Wrap" Text="{Binding SearchExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="299">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <Button Content="Search" HorizontalAlignment="Left" Height="22" Margin="373,0,0,0" VerticalAlignment="Center" Width="64" Command="{Binding SearchCommand}" />
+            <Button Content="{Binding Button1.Text}" Visibility="{Binding Button1.Visibility}" HorizontalAlignment="Left" Height="22" Margin="453,0,0,0" VerticalAlignment="Center" Width="64" Command="{Binding Button1.Command}" />
+            <Button Content="{Binding Button2.Text}" Visibility="{Binding Button2.Visibility}" HorizontalAlignment="Left" Height="22" Margin="523,0,0,0" VerticalAlignment="Center" Width="64" Command="{Binding Button2.Command}" />
+            <Button Content="{Binding Button3.Text}" Visibility="{Binding Button3.Visibility}" HorizontalAlignment="Left" Height="22" Margin="593,0,0,0" VerticalAlignment="Center" Width="64" Command="{Binding Button3.Command}" />
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding ResultBoxVisibility}" ItemsSource="{Binding ResultPage.SearchResults}" SelectedIndex="{Binding ResultPage.ResultIndex}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2" HorizontalAlignment="Stretch">
+                            <Grid.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding SelectCommand}"/>
+                            </Grid.InputBindings>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Margin="10,1,10,1" Grid.Column="0" Text="{Binding Name}"/>
+                            <TextBlock Margin="10,1,10,1" Grid.Column="1" Text="{Binding Description}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <local:PlaceControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Visibility="{Binding PlaceControlVisibility, Mode=OneWay}"/>
+        </Grid>
+    </DockPanel>
+</Window>
